@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kearifan Lokal Mangrove — Akar Nusantara</title>
+  <meta name="description" content="Pemanfaatan mangrove oleh masyarakat pesisir Balikpapan — dari pangan, pewarna alami, herbal tradisional, hingga fungsi ekologi.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── STATS ROW ── */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; margin-bottom: 3rem;
+    }
+    .stat-mini {
+      text-align: center; padding: 1.2rem 1rem;
+      background: rgba(18,42,22,0.5);
+      border: 1px solid rgba(93,202,165,0.1); border-radius: 4px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .stat-mini:hover { border-color: rgba(93,202,165,0.25); transform: translateY(-3px); }
+    .stat-mini-num  { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--teal-200); line-height: 1; }
+    .stat-mini-label{ font-size: 0.75rem; color: rgba(245,240,232,0.45); margin-top: 0.3rem; letter-spacing: 0.04em; }
+
+    /* ── FILTER ── */
+    .filter-row {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(245,240,232,0.35); flex-shrink: 0;
+    }
+
+    /* ── KEARIFAN GRID ── */
+    .kearifan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.1rem;
+    }
+
+    /* ── REFERENSI ── */
+    .referensi-box {
+      margin-top: 3.5rem; padding: 1.6rem 2rem;
+      background: rgba(13,61,54,0.15);
+      border: 1px solid rgba(53,176,158,0.12); border-radius: 4px;
+    }
+    .referensi-title {
+      font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--teal-300); font-weight: 500; margin-bottom: 1rem;
+    }
+    .referensi-list {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+    }
+    .referensi-item {
+      font-size: 0.8rem; color: rgba(245,240,232,0.42); line-height: 1.6;
+      padding-left: 0.8rem; border-left: 1px solid rgba(53,176,158,0.15);
+    }
+    .referensi-item em { color: rgba(245,240,232,0.55); font-style: italic; }
+
+    /* ── AI STRIP ── */
+    .ai-cta-strip {
+      margin-top: 2rem; padding: 1.8rem 2.2rem;
+      background: linear-gradient(135deg, rgba(13,61,54,0.28), rgba(18,42,22,0.42));
+      border: 1px solid rgba(53,176,158,0.17); border-radius: 4px;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    }
+    .ai-cta-strip p    { font-size: 0.92rem; color: rgba(245,240,232,0.68); font-weight: 300; line-height: 1.7; }
+    .ai-cta-strip strong { color: var(--cream); font-weight: 500; }
+    .btn-ai-strip {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 0.72rem 1.4rem; border-radius: 3px; flex-shrink: 0;
+      background: rgba(53,176,158,0.16); border: 1px solid var(--teal-400);
+      color: var(--teal-100); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.26s, transform 0.26s;
+    }
+    .btn-ai-strip:hover { background: rgba(53,176,158,0.3); transform: translateY(-2px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .stats-row      { grid-template-columns: repeat(2,1fr); }
+      .referensi-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 660px) {
+      .stats-row    { grid-template-columns: repeat(2,1fr); }
+      .ai-cta-strip { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 400px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">🌿 Akar Nusantara</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"   >Beranda</a></li>
+    <li><a href="spesies.html" >Spesies</a></li>
+    <li><a href="galeri.html"  >Galeri</a></li>
+    <li><a href="kearifan.html" class="active">Kearifan Lokal</a></li>
+    <li><a href="asisten.html"  class="nav-ai-btn">🤖 Tanya AI</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Etnobotani Pesisir</p>
+    <h1 class="page-title">Kearifan Lokal <em>Masyarakat</em></h1>
+    <p class="page-subtitle">
+      Masyarakat pesisir Balikpapan telah mengembangkan cara cerdas memanfaatkan
+      mangrove secara berkelanjutan — dari pangan, tekstil, obat tradisional,
+      hingga fungsi ekologi yang kini diakui ilmu pengetahuan modern.
+    </p>
+    <div class="page-divider"></div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <!-- Stats mini -->
+  <div class="stats-row reveal">
+    <div class="stat-mini">
+      <div class="stat-mini-num">16</div>
+      <div class="stat-mini-label">Jenis Pemanfaatan</div>
+    </div>
+    <div class="stat-mini">
+      <div class="stat-mini-num">4</div>
+      <div class="stat-mini-label">Kategori Kegunaan</div>
+    </div>
+    <div class="stat-mini">
+      <div class="stat-mini-num">4</div>
+      <div class="stat-mini-label">Spesies yang Dimanfaatkan</div>
+    </div>
+    <div class="stat-mini">
+      <div class="stat-mini-num">100+</div>
+      <div class="stat-mini-label">Tahun Kearifan Lokal</div>
+    </div>
+  </div>
+
+  <!-- Filter -->
+  <div class="filter-row reveal">
+    <span class="filter-label">Filter:</span>
+    <div class="filter-tabs" style="margin-bottom:0;">
+      <button class="tab-btn active" data-filter="all">Semua</button>
+      <button class="tab-btn" data-filter="pangan">🍽 Pangan</button>
+      <button class="tab-btn" data-filter="tekstil">🎨 Tekstil &amp; Pewarna</button>
+      <button class="tab-btn" data-filter="herbal">🌿 Herbal &amp; Kesehatan</button>
+      <button class="tab-btn" data-filter="ekologi">💧 Ekologi</button>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="kearifan-grid" id="kearifanGrid">
+
+    <!-- ═══ PANGAN ═══ -->
+    <div class="kearifan-card reveal reveal-delay-1" data-cat="pangan">
+      <div class="kearifan-emoji">☕</div>
+      <span class="kearifan-cat cat-pangan">Pangan</span>
+      <div class="kearifan-title">Kopi Mucrova</div>
+      <div class="kearifan-species">Rhizophora mucronata</div>
+      <div class="kearifan-desc">
+        Buah bakau hitam diekstraksi, dikeringkan, lalu di-roasting menjadi
+        produk kopi lokal khas Balikpapan. Salah satu produk unggulan
+        ekowisata mangrove dengan cita rasa earthy yang unik.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-2" data-cat="pangan">
+      <div class="kearifan-emoji">🍹</div>
+      <span class="kearifan-cat cat-pangan">Pangan</span>
+      <div class="kearifan-title">Sirup Buah Pedada</div>
+      <div class="kearifan-species">Sonneratia alba</div>
+      <div class="kearifan-desc">
+        Daging buah pedada matang diekstraksi, disaring, dan dimasak bersama
+        gula menjadi sirup segar asam-manis. Program KKN ITK di Kariangau
+        Balikpapan Barat telah mengintroduksi teknologi pengolahannya.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-3" data-cat="pangan">
+      <div class="kearifan-emoji">🌶️</div>
+      <span class="kearifan-cat cat-pangan">Pangan</span>
+      <div class="kearifan-title">Campuran Masakan &amp; Sambal</div>
+      <div class="kearifan-species">Sonneratia alba</div>
+      <div class="kearifan-desc">
+        Daun pedada segar digunakan sebagai pengganti asam atau daun jeruk
+        dalam sambal dan masakan pesisir. Buahnya kaya antioksidan dan
+        berpotensi sebagai bahan minuman kesehatan.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-1" data-cat="pangan">
+      <div class="kearifan-emoji">🌾</div>
+      <span class="kearifan-cat cat-pangan">Pangan</span>
+      <div class="kearifan-title">Tepung Mangrove Bakau</div>
+      <div class="kearifan-species">Rhizophora apiculata</div>
+      <div class="kearifan-desc">
+        Propagul diproses melalui pengupasan, perendaman bertahap untuk
+        mengurangi tanin, pengeringan, dan penggilingan menjadi tepung
+        alternatif pangan lokal bernilai gizi tinggi.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-2" data-cat="pangan">
+      <div class="kearifan-emoji">🌾</div>
+      <span class="kearifan-cat cat-pangan">Pangan</span>
+      <div class="kearifan-title">Tepung Mangrove Api-api</div>
+      <div class="kearifan-species">Avicennia alba</div>
+      <div class="kearifan-desc">
+        Biji api-api diolah melalui perebusan bertahap, pengeringan sempurna,
+        dan penggilingan menjadi bahan baku produk pangan lokal. Dapat
+        dijadikan camilan khas yang dipasarkan sebagai produk wisata.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-3" data-cat="pangan">
+      <div class="kearifan-emoji">🍵</div>
+      <span class="kearifan-cat cat-pangan">Pangan</span>
+      <div class="kearifan-title">Teh Daun Mangrove</div>
+      <div class="kearifan-species">Berbagai spesies</div>
+      <div class="kearifan-desc">
+        Daun mangrove muda dikeringkan dan diseduh sebagai teh herbal.
+        Kandungan antioksidan tinggi berpotensi membantu mengatasi
+        penyakit degeneratif termasuk diabetes mellitus.
+      </div>
+    </div>
+
+    <!-- ═══ TEKSTIL ═══ -->
+    <div class="kearifan-card reveal reveal-delay-1" data-cat="tekstil">
+      <div class="kearifan-emoji">🎨</div>
+      <span class="kearifan-cat cat-tekstil">Tekstil &amp; Pewarna</span>
+      <div class="kearifan-title">Pewarna Alami Ecoprinting</div>
+      <div class="kearifan-species">Rhizophora mucronata</div>
+      <div class="kearifan-desc">
+        Limbah air rendaman buah yang kaya tanin digunakan sebagai mordant
+        dan pewarna kain melalui proses ecoprinting, menghasilkan motif alami
+        yang artistik dan bernilai jual tinggi.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-2" data-cat="tekstil">
+      <div class="kearifan-emoji">🔴</div>
+      <span class="kearifan-cat cat-tekstil">Tekstil &amp; Pewarna</span>
+      <div class="kearifan-title">Pewarna Merah Permanen</div>
+      <div class="kearifan-species">Rhizophora mucronata</div>
+      <div class="kearifan-desc">
+        Sayatan batang bakau hitam diekstraksi menghasilkan pigmen merah
+        alami yang permanen pada kain — tanpa bahan kimia sintetis.
+        Digunakan dalam produksi batik mangrove khas Balikpapan.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-3" data-cat="tekstil">
+      <div class="kearifan-emoji">🟫</div>
+      <span class="kearifan-cat cat-tekstil">Tekstil &amp; Pewarna</span>
+      <div class="kearifan-title">Pewarna Coklat untuk Batik</div>
+      <div class="kearifan-species">Rhizophora apiculata</div>
+      <div class="kearifan-desc">
+        Daun, kulit kayu, dan sisa propagul menghasilkan pigmen coklat alami
+        untuk batik tradisional — kearifan yang diwariskan turun-temurun
+        di komunitas pesisir Balikpapan.
+      </div>
+    </div>
+
+    <!-- ═══ HERBAL ═══ -->
+    <div class="kearifan-card reveal reveal-delay-1" data-cat="herbal">
+      <div class="kearifan-emoji">💊</div>
+      <span class="kearifan-cat cat-herbal">Herbal &amp; Kesehatan</span>
+      <div class="kearifan-title">Obat Tradisional Multiguna</div>
+      <div class="kearifan-species">Rhizophora apiculata</div>
+      <div class="kearifan-desc">
+        Kulit batang mengandung alkaloid, flavonoid, tanin, dan saponin.
+        Secara tradisional digunakan untuk mengobati diare, antiseptik,
+        antiemetik, dan mendukung pemulihan dari tifus serta hepatitis.
+        <em style="font-size:0.78rem;color:rgba(245,240,232,0.35);display:block;margin-top:0.4rem;">Bandaranayake, 1998; Purnobasuki, 2004</em>
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-2" data-cat="herbal">
+      <div class="kearifan-emoji">🦷</div>
+      <span class="kearifan-cat cat-herbal">Herbal &amp; Kesehatan</span>
+      <div class="kearifan-title">Antiseptik Mulut &amp; Antidiabetes</div>
+      <div class="kearifan-species">Rhizophora mucronata</div>
+      <div class="kearifan-desc">
+        Daun muda memiliki khasiat antiseptik alami untuk kesehatan mulut.
+        Uji laboratorium menunjukkan ekstrak metanol daun menurunkan kadar
+        glukosa darah secara signifikan.
+        <em style="font-size:0.78rem;color:rgba(245,240,232,0.35);display:block;margin-top:0.4rem;">Usman dkk., 2022</em>
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-3" data-cat="herbal">
+      <div class="kearifan-emoji">🌡️</div>
+      <span class="kearifan-cat cat-herbal">Herbal &amp; Kesehatan</span>
+      <div class="kearifan-title">Antioksidan &amp; Antidiabetes</div>
+      <div class="kearifan-species">Sonneratia alba</div>
+      <div class="kearifan-desc">
+        Identifikasi fitokimia menemukan senyawa bioaktif pada daun yang
+        berpotensi sebagai antidiabetes melalui mekanisme antioksidan.
+        Secara tradisional juga digunakan untuk menurunkan kolesterol.
+        <em style="font-size:0.78rem;color:rgba(245,240,232,0.35);display:block;margin-top:0.4rem;">Puspitasari dkk., 2022</em>
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-4" data-cat="herbal">
+      <div class="kearifan-emoji">🩹</div>
+      <span class="kearifan-cat cat-herbal">Herbal &amp; Kesehatan</span>
+      <div class="kearifan-title">Obat Luka Bakar &amp; Kulit</div>
+      <div class="kearifan-species">Avicennia alba</div>
+      <div class="kearifan-desc">
+        Daun dimanfaatkan sebagai obat tradisional untuk luka bakar dan
+        penyakit kulit berkat kandungan antibakterinya. Daun muda juga
+        dapat dijadikan pakan ternak bergizi dan penurun panas.
+      </div>
+    </div>
+
+    <!-- ═══ EKOLOGI ═══ -->
+    <div class="kearifan-card reveal reveal-delay-1" data-cat="ekologi">
+      <div class="kearifan-emoji">💧</div>
+      <span class="kearifan-cat cat-ekologi">Ekologi</span>
+      <div class="kearifan-title">Biofilter Salinitas Alami</div>
+      <div class="kearifan-species">Semua jenis mangrove</div>
+      <div class="kearifan-desc">
+        Sistem perakaran prop roots dan pneumatophores berfungsi sebagai
+        biofilter alami yang menyaring ion garam dari air laut secara efisien —
+        teknologi alam yang menginspirasi desain filter air modern.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-2" data-cat="ekologi">
+      <div class="kearifan-emoji">🏠</div>
+      <span class="kearifan-cat cat-ekologi">Ekologi</span>
+      <div class="kearifan-title">Material Bangunan Tradisional</div>
+      <div class="kearifan-species">Rhizophora apiculata</div>
+      <div class="kearifan-desc">
+        Batang bakau yang kuat dan tahan air secara tradisional digunakan
+        sebagai rangka perahu nelayan, tiang bangunan pesisir, dan
+        material konstruksi jembatan kayu di atas perairan dangkal.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-3" data-cat="ekologi">
+      <div class="kearifan-emoji">🐟</div>
+      <span class="kearifan-cat cat-ekologi">Ekologi</span>
+      <div class="kearifan-title">Nursery Ground Perikanan</div>
+      <div class="kearifan-species">Semua jenis mangrove</div>
+      <div class="kearifan-desc">
+        Ekosistem mangrove berfungsi sebagai tempat pemijahan dan asuhan
+        bagi berbagai jenis ikan dan udang komersial. Nelayan lokal secara
+        turun-temurun memahami hubungan langsung antara kesehatan mangrove
+        dan hasil tangkapan laut.
+      </div>
+    </div>
+
+    <div class="kearifan-card reveal reveal-delay-4" data-cat="ekologi">
+      <div class="kearifan-emoji">🌊</div>
+      <span class="kearifan-cat cat-ekologi">Ekologi</span>
+      <div class="kearifan-title">Penahan Abrasi Pantai</div>
+      <div class="kearifan-species">Semua jenis mangrove</div>
+      <div class="kearifan-desc">
+        Jaringan akar mangrove menstabilkan sedimen dan meredam energi
+        gelombang, melindungi garis pantai dari abrasi. Masyarakat pesisir
+        secara tradisional melarang penebangan di zona buffer pantai.
+      </div>
+    </div>
+
+  </div><!-- /kearifan-grid -->
+
+  <!-- Referensi -->
+  <div class="referensi-box reveal">
+    <div class="referensi-title">Sumber &amp; Referensi Ilmiah</div>
+    <div class="referensi-list">
+      <div class="referensi-item">
+        <em>Bandaranayake W.M. (1998)</em><br>
+        Bioactivities of Mangrove Plants. Mangroves and Salt Marshes.
+      </div>
+      <div class="referensi-item">
+        <em>Purnobasuki H. (2004)</em><br>
+        Potensi Mangrove Sebagai Tanaman Obat. FMIPA Universitas Airlangga.
+      </div>
+      <div class="referensi-item">
+        <em>Puspitasari dkk. (2022)</em><br>
+        Fitokimia Daun Sonneratia alba. Jurnal Perikanan dan Kelautan.
+      </div>
+      <div class="referensi-item">
+        <em>Usman dkk. (2022)</em><br>
+        Antioksidan &amp; Antidiabetes R. mucronata. Jurnal Sains &amp; Kesehatan.
+      </div>
+      <div class="referensi-item">
+        <em>LPPM ITK (2023)</em><br>
+        Laporan KKN Kariangau, Balikpapan Barat.
+      </div>
+      <div class="referensi-item">
+        <em>KLHK RI &amp; BKSDA Kalimantan Timur</em><br>
+        Data Keanekaragaman Hayati Mangrove Teluk Balikpapan.
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Strip -->
+  <div class="ai-cta-strip reveal">
+    <p>
+      <strong>Ingin tahu lebih dalam tentang salah satu pemanfaatan?</strong><br>
+      Tanyakan langsung ke AI Asisten — cara pengolahan, kandungan kimia,
+      atau potensi pengembangan produk berbasis mangrove.
+    </p>
+    <a href="asisten.html?prompt=Jelaskan+secara+detail+pemanfaatan+mangrove+oleh+masyarakat+Balikpapan+dan+potensi+pengembangannya+sebagai+produk+ekonomi." class="btn-ai-strip">
+      🤖 Tanya AI Asisten
+    </a>
+  </div>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">Akar Nusantara</div>
+  <p class="footer-tagline">Mangrove Teluk Balikpapan — Kalimantan Timur</p>
+  <div class="footer-divider"></div>
+  <p class="footer-contest">🏆 Lomba Vlog Eduforia 2026</p>
+  <p class="footer-credit">
+    FKIP USN Kolaka &nbsp;·&nbsp; Kategori Video Edukasi Lingkungan<br>
+    Disusun dengan kecintaan terhadap ekosistem pesisir Nusantara
+  </p>
+</footer>
+
+<script>
+  // ── NAVBAR ──
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ── REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── FILTER TABS ──
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const cards   = document.querySelectorAll('.kearifan-card');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => {
+        card.classList.toggle('hidden', f !== 'all' && card.dataset.cat !== f);
+      });
+    });
+  });
+</script>
+</body>
+</html>

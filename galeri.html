@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Mangrove — Akar Nusantara</title>
+  <meta name="description" content="Dokumentasi visual ekosistem mangrove Teluk Balikpapan — perakaran, spesies, fauna, dan aktivitas masyarakat pesisir.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── INTRO ── */
+    .galeri-intro-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center; margin-bottom: 3rem;
+    }
+    .galeri-intro-text .body-text { margin-top: 0.5rem; }
+
+    /* ── FILTER ── */
+    .galeri-filter-row {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(245,240,232,0.35); flex-shrink: 0;
+    }
+
+    /* ── MASONRY GRID ── */
+    .galeri-grid {
+      columns: 3; column-gap: 1rem;
+    }
+
+    /* Override ukuran placeholder per kategori */
+    .galeri-item[data-cat="spesies"]   .galeri-placeholder { padding: 3.5rem 1rem; }
+    .galeri-item[data-cat="ekosistem"] .galeri-placeholder { padding: 4rem 1rem; }
+    .galeri-item[data-cat="fauna"]     .galeri-placeholder { padding: 3rem 1rem; }
+    .galeri-item[data-cat="aktivitas"] .galeri-placeholder { padding: 3.2rem 1rem; }
+
+    /* ── LIGHTBOX ── */
+    /* sudah di style.css */
+
+    /* ── AI STRIP ── */
+    .ai-cta-strip {
+      margin-top: 3rem; padding: 1.8rem 2.2rem;
+      background: linear-gradient(135deg, rgba(13,61,54,0.28), rgba(18,42,22,0.42));
+      border: 1px solid rgba(53,176,158,0.17); border-radius: 4px;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    }
+    .ai-cta-strip p { font-size: 0.92rem; color: rgba(245,240,232,0.68); font-weight: 300; line-height: 1.7; }
+    .ai-cta-strip strong { color: var(--cream); font-weight: 500; }
+    .btn-ai-strip {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 0.72rem 1.4rem; border-radius: 3px; flex-shrink: 0;
+      background: rgba(53,176,158,0.16); border: 1px solid var(--teal-400);
+      color: var(--teal-100); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.26s, transform 0.26s;
+    }
+    .btn-ai-strip:hover { background: rgba(53,176,158,0.3); transform: translateY(-2px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .galeri-intro-row { grid-template-columns: 1fr; gap: 1.5rem; }
+      .galeri-grid { columns: 2; column-gap: 0.8rem; }
+    }
+    @media (max-width: 660px) {
+      .ai-cta-strip { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .galeri-grid { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">🌿 Akar Nusantara</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"   >Beranda</a></li>
+    <li><a href="spesies.html" >Spesies</a></li>
+    <li><a href="galeri.html"   class="active">Galeri</a></li>
+    <li><a href="kearifan.html">Kearifan Lokal</a></li>
+    <li><a href="asisten.html"  class="nav-ai-btn">🤖 Tanya AI</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Dokumentasi Visual</p>
+    <h1 class="page-title">Galeri <em>Mangrove</em></h1>
+    <p class="page-subtitle">
+      Kumpulan foto dokumentasi ekosistem mangrove Teluk Balikpapan —
+      dari keindahan perakaran, keanekaragaman spesies, kehidupan fauna,
+      hingga aktivitas masyarakat pesisir.
+    </p>
+    <div class="page-divider"></div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main class="wide">
+
+  <!-- Intro -->
+  <div class="galeri-intro-row reveal">
+    <div class="galeri-intro-text">
+      <p class="section-label">Dokumentasi Lapangan</p>
+      <h2 class="section-title">Mangrove dalam <em>Gambar</em></h2>
+      <div class="divider"></div>
+      <p class="body-text">
+        Setiap foto menyimpan cerita tentang ekosistem yang kaya dan komunitas
+        yang bergantung padanya. Klik foto untuk melihat lebih detail.
+      </p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;">
+      <div style="padding:1rem;background:rgba(18,42,22,0.5);border:1px solid rgba(93,202,165,0.1);border-radius:4px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal-200);">12</div>
+        <div style="font-size:0.75rem;color:rgba(245,240,232,0.42);margin-top:0.2rem;">Foto Dokumentasi</div>
+      </div>
+      <div style="padding:1rem;background:rgba(18,42,22,0.5);border:1px solid rgba(93,202,165,0.1);border-radius:4px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal-200);">4</div>
+        <div style="font-size:0.75rem;color:rgba(245,240,232,0.42);margin-top:0.2rem;">Kategori</div>
+      </div>
+      <div style="padding:1rem;background:rgba(18,42,22,0.5);border:1px solid rgba(93,202,165,0.1);border-radius:4px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal-200);">4</div>
+        <div style="font-size:0.75rem;color:rgba(245,240,232,0.42);margin-top:0.2rem;">Spesies Terekam</div>
+      </div>
+      <div style="padding:1rem;background:rgba(18,42,22,0.5);border:1px solid rgba(93,202,165,0.1);border-radius:4px;text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal-200);">Kaltim</div>
+        <div style="font-size:0.75rem;color:rgba(245,240,232,0.42);margin-top:0.2rem;">Lokasi</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter -->
+  <div class="galeri-filter-row reveal">
+    <span class="filter-label">Kategori:</span>
+    <div class="filter-tabs" style="margin-bottom:0;">
+      <button class="tab-btn active" data-filter="all">Semua</button>
+      <button class="tab-btn" data-filter="spesies">🌿 Spesies</button>
+      <button class="tab-btn" data-filter="ekosistem">🌊 Ekosistem</button>
+      <button class="tab-btn" data-filter="fauna">🦅 Fauna</button>
+      <button class="tab-btn" data-filter="aktivitas">🏺 Aktivitas</button>
+    </div>
+  </div>
+
+  <!-- Masonry Grid — 12 slot -->
+  <div class="galeri-grid reveal" id="galeriGrid">
+
+    <!-- Spesies -->
+    <div class="galeri-item" data-cat="spesies" data-caption="Avicennia alba — Api-api Putih">
+      <img src="foto/galeri/galeri-1.jpg" alt="Avicennia alba" loading="lazy">
+      <div class="galeri-placeholder"><span>🌿</span><p>Avicennia alba</p></div>
+      <div class="galeri-caption">Avicennia alba — Api-api Putih</div>
+    </div>
+
+    <div class="galeri-item" data-cat="ekosistem" data-caption="Hamparan hutan mangrove Teluk Balikpapan">
+      <img src="foto/galeri/galeri-2.jpg" alt="Ekosistem mangrove" loading="lazy">
+      <div class="galeri-placeholder"><span>🌊</span><p>Ekosistem Mangrove</p></div>
+      <div class="galeri-caption">Hamparan hutan mangrove Teluk Balikpapan</div>
+    </div>
+
+    <div class="galeri-item" data-cat="spesies" data-caption="Rhizophora apiculata — Akar Tunjang">
+      <img src="foto/galeri/galeri-3.jpg" alt="Rhizophora apiculata" loading="lazy">
+      <div class="galeri-placeholder"><span>🌱</span><p>Rhizophora apiculata</p></div>
+      <div class="galeri-caption">Rhizophora apiculata — Akar Tunjang</div>
+    </div>
+
+    <div class="galeri-item" data-cat="fauna" data-caption="Fauna pesisir di ekosistem mangrove">
+      <img src="foto/galeri/galeri-4.jpg" alt="Fauna mangrove" loading="lazy">
+      <div class="galeri-placeholder"><span>🦀</span><p>Fauna Mangrove</p></div>
+      <div class="galeri-caption">Fauna pesisir di ekosistem mangrove</div>
+    </div>
+
+    <div class="galeri-item" data-cat="spesies" data-caption="Rhizophora mucronata — Propagul Gemuk">
+      <img src="foto/galeri/galeri-5.jpg" alt="Rhizophora mucronata" loading="lazy">
+      <div class="galeri-placeholder"><span>🌰</span><p>Rhizophora mucronata</p></div>
+      <div class="galeri-caption">Rhizophora mucronata — Propagul &amp; Daun</div>
+    </div>
+
+    <div class="galeri-item" data-cat="aktivitas" data-caption="Produk olahan mangrove — Kopi Mucrova">
+      <img src="foto/galeri/galeri-6.jpg" alt="Produk olahan mangrove" loading="lazy">
+      <div class="galeri-placeholder"><span>☕</span><p>Kopi Mucrova</p></div>
+      <div class="galeri-caption">Produk olahan mangrove — Kopi Mucrova</div>
+    </div>
+
+    <div class="galeri-item" data-cat="spesies" data-caption="Sonneratia alba — Buah Mahkota Bintang">
+      <img src="foto/galeri/galeri-7.jpg" alt="Sonneratia alba" loading="lazy">
+      <div class="galeri-placeholder"><span>🌺</span><p>Sonneratia alba</p></div>
+      <div class="galeri-caption">Sonneratia alba — Buah Mahkota Bintang</div>
+    </div>
+
+    <div class="galeri-item" data-cat="ekosistem" data-caption="Sistem perakaran mangrove yang kokoh">
+      <img src="foto/galeri/galeri-8.jpg" alt="Sistem perakaran" loading="lazy">
+      <div class="galeri-placeholder"><span>🌿</span><p>Sistem Perakaran</p></div>
+      <div class="galeri-caption">Sistem perakaran mangrove yang kokoh</div>
+    </div>
+
+    <div class="galeri-item" data-cat="fauna" data-caption="Burung di ekosistem mangrove Balikpapan">
+      <img src="foto/galeri/galeri-9.jpg" alt="Burung mangrove" loading="lazy">
+      <div class="galeri-placeholder"><span>🦅</span><p>Avifauna Mangrove</p></div>
+      <div class="galeri-caption">Burung di ekosistem mangrove Balikpapan</div>
+    </div>
+
+    <div class="galeri-item" data-cat="aktivitas" data-caption="Ecoprinting — Pewarna alami dari mangrove">
+      <img src="foto/galeri/galeri-10.jpg" alt="Ecoprinting mangrove" loading="lazy">
+      <div class="galeri-placeholder"><span>🎨</span><p>Ecoprinting</p></div>
+      <div class="galeri-caption">Ecoprinting — Pewarna alami dari mangrove</div>
+    </div>
+
+    <div class="galeri-item" data-cat="ekosistem" data-caption="Kawasan pesisir Teluk Balikpapan">
+      <img src="foto/galeri/galeri-11.jpg" alt="Kawasan pesisir" loading="lazy">
+      <div class="galeri-placeholder"><span>🌅</span><p>Kawasan Pesisir</p></div>
+      <div class="galeri-caption">Kawasan pesisir Teluk Balikpapan</div>
+    </div>
+
+    <div class="galeri-item" data-cat="aktivitas" data-caption="Restorasi dan penanaman mangrove">
+      <img src="foto/galeri/galeri-12.jpg" alt="Restorasi mangrove" loading="lazy">
+      <div class="galeri-placeholder"><span>🌱</span><p>Restorasi Mangrove</p></div>
+      <div class="galeri-caption">Restorasi dan penanaman mangrove</div>
+    </div>
+
+  </div><!-- /galeri-grid -->
+
+  <!-- AI Strip -->
+  <div class="ai-cta-strip reveal">
+    <p>
+      <strong>Temukan spesies dari foto di atas?</strong><br>
+      Upload foto mangrove Anda sendiri ke AI Asisten untuk identifikasi
+      spesies dan informasi pemanfaatannya secara langsung.
+    </p>
+    <a href="asisten.html" class="btn-ai-strip">🤖 Identifikasi via AI</a>
+  </div>
+
+</main>
+
+<!-- ══ LIGHTBOX ══ -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">✕ Tutup</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev">&#8592;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lbNext">&#8594;</button>
+  <div class="lightbox-caption" id="lbCaption"></div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">Akar Nusantara</div>
+  <p class="footer-tagline">Mangrove Teluk Balikpapan — Kalimantan Timur</p>
+  <div class="footer-divider"></div>
+  <p class="footer-contest">🏆 Lomba Vlog Eduforia 2026</p>
+  <p class="footer-credit">
+    FKIP USN Kolaka &nbsp;·&nbsp; Kategori Video Edukasi Lingkungan
+  </p>
+</footer>
+
+<script>
+  // ── NAVBAR ──
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ── REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── LOAD FOTO dari folder foto/galeri/ ──
+  const galeriItems = document.querySelectorAll('.galeri-item');
+  const loadedIndexes = [];
+
+  galeriItems.forEach((item, i) => {
+    const img  = item.querySelector('img');
+    if (!img) return;
+    const test = new Image();
+    test.onload  = () => {
+      img.classList.add('loaded');
+      item.classList.add('has-photo');
+      loadedIndexes.push(i);
+    };
+    test.onerror = () => { img.removeAttribute('src'); };
+    test.src = img.src;
+  });
+
+  // ── FILTER ──
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      galeriItems.forEach(item => {
+        item.classList.toggle('hidden', f !== 'all' && item.dataset.cat !== f);
+      });
+    });
+  });
+
+  // ── LIGHTBOX ──
+  const lightbox  = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lbImg');
+  const lbCaption = document.getElementById('lbCaption');
+  const lbClose   = document.getElementById('lbClose');
+  const lbPrev    = document.getElementById('lbPrev');
+  const lbNext    = document.getElementById('lbNext');
+  let currentIdx  = 0;
+
+  function openLightbox(idx) {
+    const item = galeriItems[idx];
+    if (!item.classList.contains('has-photo')) return;
+    currentIdx      = idx;
+    lbImg.src       = item.querySelector('img').src;
+    lbCaption.textContent = item.dataset.caption || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { lbImg.src = ''; }, 350);
+  }
+
+  function navigate(dir) {
+    if (!loadedIndexes.length) return;
+    const pos  = loadedIndexes.indexOf(currentIdx);
+    const next = (pos + dir + loadedIndexes.length) % loadedIndexes.length;
+    openLightbox(loadedIndexes[next]);
+  }
+
+  galeriItems.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click',  () => navigate(-1));
+  lbNext.addEventListener('click',  () => navigate(1));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   navigate(-1);
+    if (e.key === 'ArrowRight')  navigate(1);
+  });
+</script>
+</body>
+</html>

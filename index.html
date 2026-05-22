@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akar Nusantara — Mangrove Teluk Balikpapan</title>
+  <meta name="description" content="Website edukatif tentang ekosistem mangrove Teluk Balikpapan, Kalimantan Timur. Mengenal spesies, kearifan lokal, dan identifikasi dengan AI.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── HERO ── */
+    #hero {
+      height: 100vh; min-height: 620px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      text-align: center; padding: 6rem 1.5rem 4rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(35,137,122,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 100%, rgba(30,90,40,0.22) 0%, transparent 60%),
+        linear-gradient(175deg, #071209 0%, #0f2415 30%, #0a1a0d 70%, #040c06 100%);
+    }
+    .hero-pattern {
+      position: absolute; inset: 0; opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23fff' stroke-width='0.5'%3E%3Cellipse cx='30' cy='30' rx='28' ry='12'/%3E%3Cellipse cx='30' cy='30' rx='18' ry='28'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-deco {
+      position: absolute; border-radius: 50% 5% 50% 5%;
+      border: 1px solid rgba(93,202,165,0.07);
+      animation: leafFloat 9s ease-in-out infinite;
+    }
+    .hero-deco-1 { width: 550px; height: 550px; top: -100px; left: -140px; }
+    .hero-deco-2 { width: 380px; height: 380px; bottom: -80px; right: -90px; border-radius: 5% 50% 5% 50%; animation-duration: 11s; animation-direction: reverse; }
+    @keyframes leafFloat {
+      0%,100% { transform: rotate(-18deg) scale(1); }
+      50%      { transform: rotate(-15deg) scale(1.022); }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 760px; }
+
+    .hero-eyebrow {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--teal-200); margin-bottom: 1.1rem;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      opacity: 0; animation: fadeUp 0.9s 0.2s forwards;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 22px; height: 1px;
+      background: var(--teal-300); flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      font-weight: 700; line-height: 1.05; color: var(--cream);
+      opacity: 0; animation: fadeUp 0.9s 0.38s forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+      font-weight: 400; font-style: italic;
+      color: var(--teal-100); margin: 1.1rem auto 2.4rem; max-width: 520px;
+      opacity: 0; animation: fadeUp 0.9s 0.56s forwards;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.9s 0.74s forwards;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.88rem 2rem; border-radius: 2px; cursor: pointer;
+      background: rgba(53,176,158,0.18); border: 1px solid var(--teal-400);
+      color: var(--teal-100); font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-primary:hover { background: rgba(53,176,158,0.32); transform: translateY(-3px); box-shadow: 0 8px 22px rgba(35,137,122,0.25); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 0.88rem 2rem; border-radius: 2px; cursor: pointer;
+      background: transparent; border: 1px solid var(--gold);
+      color: var(--gold-light); font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-secondary:hover { background: var(--gold); color: var(--green-900); transform: translateY(-3px); box-shadow: 0 8px 22px rgba(201,168,76,0.22); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 0; right: 0;
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
+      opacity: 0; animation: heroFade 1s 1.1s forwards;
+    }
+    .hero-scroll span { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal-200); opacity: 0.6; }
+    .scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--teal-300), transparent); animation: scrollPulse 2.2s ease-in-out infinite; }
+    @keyframes scrollPulse {
+      0%  { transform: scaleY(0); transform-origin: top; }
+      49% { transform: scaleY(1); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: bottom; }
+      100%{ transform: scaleY(0); transform-origin: bottom; }
+    }
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes heroFade { from { opacity:0; } to { opacity:1; } }
+
+    /* ── TENTANG ── */
+    #tentang { padding: 5.5rem 2rem; }
+    .tentang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 2.8rem; }
+    .stats-grid   { display: grid; gap: 0.9rem; }
+
+    /* ── AI CTA BANNER ── */
+    #ai-cta {
+      margin: 0 2rem;
+      padding: 3rem 3.5rem;
+      background: linear-gradient(135deg, rgba(13,61,54,0.35) 0%, rgba(18,42,22,0.5) 100%);
+      border: 1px solid rgba(53,176,158,0.22);
+      border-radius: 6px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    }
+    #ai-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(35,137,122,0.1), transparent);
+    }
+    .ai-cta-text { position: relative; z-index: 1; }
+    .ai-cta-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem,3vw,2rem); font-weight: 600; color: var(--cream); line-height: 1.25; }
+    .ai-cta-text h2 em { font-style: italic; color: var(--gold-light); }
+    .ai-cta-text p { margin-top: 0.6rem; font-size: 0.92rem; font-weight: 300; color: rgba(245,240,232,0.62); max-width: 480px; line-height: 1.78; }
+    .ai-cta-action { position: relative; z-index: 1; flex-shrink: 0; }
+    .btn-ai-big {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 1rem 2rem; border-radius: 3px;
+      background: rgba(53,176,158,0.2); border: 1px solid var(--teal-300);
+      color: var(--teal-100); font-family: 'Inter', sans-serif;
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; text-decoration: none;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      white-space: nowrap;
+    }
+    .btn-ai-big:hover { background: rgba(53,176,158,0.35); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(35,137,122,0.3); }
+    .ai-cta-pulse {
+      display: inline-flex; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--teal-300); position: relative;
+    }
+    .ai-cta-pulse::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 1px solid var(--teal-300); animation: pulse 2s ease-out infinite; }
+    @keyframes pulse { 0% { transform:scale(1); opacity:0.8; } 100% { transform:scale(2.2); opacity:0; } }
+
+    /* ── INOVASI ── */
+    #inovasi { padding: 5rem 2rem; background: linear-gradient(180deg, transparent, rgba(9,26,12,0.6)); }
+    .inovasi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.4rem; margin-top: 2.8rem; }
+    .inovasi-card {
+      background: rgba(13,61,54,0.17); border: 1px solid rgba(53,176,158,0.13);
+      border-radius: 4px; padding: 1.8rem 1.4rem; text-align: center;
+      transition: background 0.38s, border-color 0.38s, transform 0.38s;
+    }
+    .inovasi-card:hover { background: rgba(13,61,54,0.32); border-color: rgba(53,176,158,0.3); transform: translateY(-5px); }
+    .inovasi-icon { width: 54px; height: 54px; border-radius: 50%; background: rgba(35,137,122,0.12); border: 1px solid rgba(53,176,158,0.17); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1.1rem; transition: background 0.38s, transform 0.38s; }
+    .inovasi-card:hover .inovasi-icon { background: rgba(35,137,122,0.25); transform: scale(1.1) rotate(-5deg); }
+    .inovasi-title { font-size: 0.95rem; font-weight: 600; color: var(--cream); margin-bottom: 0.7rem; }
+    .inovasi-desc  { font-size: 0.84rem; color: rgba(245,240,232,0.56); line-height: 1.7; }
+
+    /* ── QUICK NAV ── */
+    #quick-nav { padding: 4rem 2rem 5.5rem; }
+    .qnav-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 2.2rem; }
+    .qnav-card {
+      background: rgba(18,42,22,0.55); border: 1px solid rgba(93,202,165,0.1);
+      border-radius: 4px; padding: 1.6rem 1.2rem;
+      text-decoration: none; display: flex; flex-direction: column; align-items: center;
+      gap: 0.7rem; text-align: center;
+      transition: border-color 0.35s, transform 0.35s, background 0.35s;
+      position: relative; overflow: hidden;
+    }
+    .qnav-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--teal-400), var(--green-400)); transform: scaleX(0); transform-origin: left; transition: transform 0.38s; }
+    .qnav-card:hover { border-color: rgba(93,202,165,0.26); transform: translateY(-4px); background: rgba(18,42,22,0.75); }
+    .qnav-card:hover::after { transform: scaleX(1); }
+    .qnav-icon  { font-size: 1.8rem; }
+    .qnav-title { font-size: 0.85rem; font-weight: 600; color: var(--cream); }
+    .qnav-desc  { font-size: 0.76rem; color: rgba(245,240,232,0.45); line-height: 1.55; }
+
+    /* RESPONSIVE tambahan */
+    @media (max-width: 860px) {
+      .inovasi-grid { grid-template-columns: 1fr 1fr; }
+      .qnav-grid    { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 660px) {
+      #tentang      { padding: 3.5rem 1.2rem; }
+      #inovasi      { padding: 3.5rem 1.2rem; }
+      #quick-nav    { padding: 3rem 1.2rem 4rem; }
+      #ai-cta       { margin: 0 1.2rem; padding: 2rem 1.6rem; flex-direction: column; text-align: center; }
+      .ai-cta-text p { max-width: 100%; }
+      .tentang-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .inovasi-grid { grid-template-columns: 1fr; }
+      .qnav-grid    { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      .hero-title   { font-size: 2.5rem; }
+      .qnav-grid    { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">🌿 Akar Nusantara</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"    class="active">Beranda</a></li>
+    <li><a href="spesies.html"  >Spesies</a></li>
+    <li><a href="galeri.html"   >Galeri</a></li>
+    <li><a href="kearifan.html" >Kearifan Lokal</a></li>
+    <li><a href="asisten.html"  class="nav-ai-btn">🤖 Tanya AI</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-deco hero-deco-1"></div>
+  <div class="hero-deco hero-deco-2"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Ekosistem Pesisir Kalimantan Timur</p>
+    <h1 class="hero-title">Akar <em>Nusantara</em></h1>
+    <p class="hero-subtitle">Mengenal Mangrove dan Kearifan Lokal Teluk Balikpapan</p>
+    <div class="hero-actions">
+      <a href="asisten.html" class="btn-primary">
+        🤖 Identifikasi dengan AI
+      </a>
+      <a href="spesies.html" class="btn-secondary">
+        Jelajahi Spesies →
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Gulir ke bawah</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══ TENTANG ══ -->
+<section id="tentang">
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div class="reveal">
+      <p class="section-label">Tentang Kawasan</p>
+      <h2 class="section-title">Mangrove <em>Teluk Balikpapan</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="tentang-grid">
+      <div class="reveal reveal-delay-1">
+        <p class="body-text" style="margin-bottom:1rem;">
+          Hutan mangrove Teluk Balikpapan merupakan salah satu ekosistem pesisir terpenting di
+          Kalimantan Timur. Terletak di kawasan strategis Ibu Kota Nusantara, kawasan ini menjadi
+          benteng alami yang melindungi garis pantai dari abrasi, gelombang, dan intrusi air laut.
+        </p>
+        <p class="body-text" style="margin-bottom:1rem;">
+          Lebih dari sekadar penyangga alam, hutan ini adalah rumah bagi ratusan spesies fauna —
+          mulai dari kepiting bakau, udang, hingga burung langka. Ekosistemnya menyimpan karbon
+          dalam jumlah besar, menjadikannya aset krusial dalam mitigasi perubahan iklim.
+        </p>
+        <p class="body-text">
+          Masyarakat lokal telah hidup berdampingan dengan mangrove selama berabad-abad,
+          mengembangkan kearifan dalam memanfaatkannya secara berkelanjutan — dari pangan,
+          pewarna alami, obat tradisional, hingga produk inovatif khas Balikpapan.
+        </p>
+      </div>
+      <div class="stats-grid reveal reveal-delay-2">
+        <div class="stat-card">
+          <div class="stat-icon">🌿</div>
+          <div><div class="stat-number">14+</div><div class="stat-desc">Spesies Mangrove Teridentifikasi</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🗺️</div>
+          <div><div class="stat-number">±17.000 Ha</div><div class="stat-desc">Kawasan Mangrove Teluk Balikpapan</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🦅</div>
+          <div><div class="stat-number">Ratusan</div><div class="stat-desc">Spesies Fauna Penghuni Ekosistem</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🌱</div>
+          <div><div class="stat-number">70%</div><div class="stat-desc">Kerapatan Hutan Mangrove Kaltim Masih Rapat</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AI CTA BANNER ══ -->
+<div id="ai-cta" class="reveal">
+  <div class="ai-cta-text">
+    <h2>Temui Mangrove? <em>Kenali Sekarang</em></h2>
+    <p>
+      Gunakan asisten AI kami untuk mengidentifikasi spesies mangrove yang Anda temui —
+      cukup deskripsikan ciri-cirinya atau unggah foto langsung dari lapangan.
+      Gratis, tanpa perlu daftar akun.
+    </p>
+  </div>
+  <div class="ai-cta-action">
+    <a href="asisten.html" class="btn-ai-big">
+      <span class="ai-cta-pulse"></span>
+      Mulai Identifikasi
+    </a>
+  </div>
+</div>
+
+<!-- ══ INOVASI ══ -->
+<section id="inovasi">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="reveal">
+      <p class="section-label">Teknologi & Pelestarian</p>
+      <h2 class="section-title">Inovasi Digital untuk <em>Konservasi</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="inovasi-grid">
+      <div class="inovasi-card reveal reveal-delay-1">
+        <div class="inovasi-icon">🤖</div>
+        <div class="inovasi-title">AI Identifikasi Spesies</div>
+        <div class="inovasi-desc">Platform iNaturalist dan AI generatif membantu identifikasi spesies mangrove secara akurat hanya dari foto, membangun basis data biodiversitas secara kolaboratif.</div>
+      </div>
+      <div class="inovasi-card reveal reveal-delay-2">
+        <div class="inovasi-icon">🌍</div>
+        <div class="inovasi-title">Pemantauan Satelit</div>
+        <div class="inovasi-desc">Global Mangrove Watch (GMW-JAXA) menggunakan citra satelit untuk memantau perubahan tutupan hutan mangrove global dan mendeteksi deforestasi secara real-time.</div>
+      </div>
+      <div class="inovasi-card reveal reveal-delay-3">
+        <div class="inovasi-icon">📱</div>
+        <div class="inovasi-title">Digitalisasi Kearifan Lokal</div>
+        <div class="inovasi-desc">Website, video dokumenter, dan konten digital menjadi medium pewarisan kearifan lokal yang efektif — menjangkau generasi muda dan komunitas global.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUICK NAV ══ -->
+<section id="quick-nav">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="reveal" style="text-align:center;">
+      <p class="section-label" style="justify-content:center;display:flex;">Jelajahi Lebih Lanjut</p>
+      <h2 class="section-title">Pilih Topik yang <em>Ingin Dipelajari</em></h2>
+    </div>
+    <div class="qnav-grid">
+      <a href="spesies.html" class="qnav-card reveal reveal-delay-1">
+        <div class="qnav-icon">🌿</div>
+        <div class="qnav-title">Spesies Dominan</div>
+        <div class="qnav-desc">Morfologi lengkap 4 spesies mangrove utama Teluk Balikpapan</div>
+      </a>
+      <a href="galeri.html" class="qnav-card reveal reveal-delay-2">
+        <div class="qnav-icon">📸</div>
+        <div class="qnav-title">Galeri Visual</div>
+        <div class="qnav-desc">Dokumentasi foto ekosistem mangrove dan kehidupan pesisir</div>
+      </a>
+      <a href="kearifan.html" class="qnav-card reveal reveal-delay-3">
+        <div class="qnav-icon">🏺</div>
+        <div class="qnav-title">Kearifan Lokal</div>
+        <div class="qnav-desc">16 pemanfaatan tradisional dan inovatif oleh masyarakat pesisir</div>
+      </a>
+      <a href="asisten.html" class="qnav-card reveal reveal-delay-4" style="border-color:rgba(53,176,158,0.2);">
+        <div class="qnav-icon">🤖</div>
+        <div class="qnav-title">AI Asisten</div>
+        <div class="qnav-desc">Identifikasi spesies mangrove dengan kecerdasan buatan — gratis</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">Akar Nusantara</div>
+  <p class="footer-tagline">Mangrove Teluk Balikpapan — Kalimantan Timur</p>
+  <div class="footer-divider"></div>
+  <div class="footer-sources">
+    <strong>Sumber Data</strong><br>
+    KLHK RI · BKSDA Kalimantan Timur · LPPM ITK · BRIDA Kaltim<br>
+    Global Mangrove Watch — JAXA · iNaturalist · Pemprov Kaltim (2019)
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

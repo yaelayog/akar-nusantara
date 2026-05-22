@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spesies Mangrove — Akar Nusantara</title>
+  <meta name="description" content="Empat spesies mangrove dominan di Teluk Balikpapan — morfologi, ciri khas, dan pemanfaatannya oleh masyarakat lokal.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── GRID SPESIES ── */
+    .species-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.8rem;
+      margin-top: 3rem;
+    }
+
+    /* Override tinggi foto untuk halaman ini */
+    .species-photo { height: 240px; }
+
+    /* Detail morfologi accordion-style */
+    .species-traits { padding: 0 1.4rem; }
+    .trait-group {
+      border-bottom: 1px solid rgba(93,202,165,0.07);
+      padding: 0.75rem 0;
+    }
+    .trait-group:last-child { border-bottom: none; }
+
+    /* Pemanfaatan ringkas */
+    .species-uses {
+      padding: 0.8rem 1.4rem;
+      background: rgba(10,25,14,0.5);
+      border-top: 1px solid rgba(93,202,165,0.07);
+    }
+    .uses-label {
+      font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--teal-300); font-weight: 500; margin-bottom: 0.5rem;
+    }
+    .uses-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .use-tag {
+      font-size: 0.7rem; padding: 0.18rem 0.55rem; border-radius: 20px;
+      background: rgba(35,137,122,0.1); border: 1px solid rgba(53,176,158,0.15);
+      color: rgba(245,240,232,0.55);
+    }
+
+    /* Intro text area */
+    .intro-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+      margin-bottom: 1rem;
+    }
+    .intro-note {
+      padding: 1.2rem 1.4rem;
+      background: rgba(13,61,54,0.18);
+      border: 1px solid rgba(53,176,158,0.14);
+      border-radius: 4px;
+    }
+    .intro-note p {
+      font-size: 0.84rem; color: rgba(245,240,232,0.58);
+      line-height: 1.72;
+    }
+    .intro-note p + p { margin-top: 0.6rem; }
+    .intro-note strong { color: var(--teal-200); font-weight: 500; }
+
+    /* CTA ke AI di bottom */
+    .ai-cta-strip {
+      margin-top: 3.5rem; padding: 2.2rem 2.5rem;
+      background: linear-gradient(135deg, rgba(13,61,54,0.3), rgba(18,42,22,0.45));
+      border: 1px solid rgba(53,176,158,0.18); border-radius: 4px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .ai-cta-strip p {
+      font-size: 0.95rem; color: rgba(245,240,232,0.7);
+      font-weight: 300; line-height: 1.7;
+    }
+    .ai-cta-strip strong { color: var(--cream); font-weight: 500; }
+    .btn-ai-strip {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 0.75rem 1.5rem; border-radius: 3px; flex-shrink: 0;
+      background: rgba(53,176,158,0.18); border: 1px solid var(--teal-400);
+      color: var(--teal-100); font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.28s, transform 0.28s;
+    }
+    .btn-ai-strip:hover { background: rgba(53,176,158,0.32); transform: translateY(-2px); }
+
+    @media (max-width: 820px) {
+      .species-grid { grid-template-columns: 1fr; }
+      .intro-row    { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 660px) {
+      .ai-cta-strip { flex-direction: column; text-align: center; }
+      .species-photo { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">🌿 Akar Nusantara</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html"   >Beranda</a></li>
+    <li><a href="spesies.html" class="active">Spesies</a></li>
+    <li><a href="galeri.html"  >Galeri</a></li>
+    <li><a href="kearifan.html">Kearifan Lokal</a></li>
+    <li><a href="asisten.html" class="nav-ai-btn">🤖 Tanya AI</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">Flora Pesisir</p>
+    <h1 class="page-title">Spesies Mangrove <em>Dominan</em></h1>
+    <p class="page-subtitle">
+      Empat spesies utama yang mendominasi ekosistem mangrove Teluk Balikpapan,
+      masing-masing dengan karakteristik morfologi dan peran ekologis yang unik.
+    </p>
+    <div class="page-divider"></div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <!-- Intro -->
+  <div class="intro-row reveal">
+    <div>
+      <p class="section-label">Keanekaragaman Hayati</p>
+      <h2 class="section-title">Mengenal Lebih Dekat <em>Empat Spesies</em></h2>
+      <div class="divider"></div>
+      <p class="body-text">
+        Dari 14 spesies mangrove yang teridentifikasi di Teluk Balikpapan,
+        empat spesies ini mendominasi kawasan dan menjadi tulang punggung
+        ekosistem pesisir Kalimantan Timur — sekaligus sumber utama
+        kearifan lokal masyarakat Balikpapan.
+      </p>
+    </div>
+    <div class="intro-note">
+      <p>
+        <strong>Cara membedakan spesies Rhizophora:</strong><br>
+        Perhatikan ukuran propagul dan ujung daun.
+        <em>R. apiculata</em> memiliki propagul ramping panjang dan daun lebih kecil.
+        <em>R. mucronata</em> propagulnya lebih gemuk dengan ujung daun berduri kecil (mucronat).
+      </p>
+      <p>
+        <strong>Tips identifikasi lapangan:</strong><br>
+        Amati tipe perakaran — akar tunjang (Rhizophora), pneumatophore paku
+        (Avicennia), atau pneumatophore besar tumpul (Sonneratia).
+      </p>
+    </div>
+  </div>
+
+  <!-- Grid Spesies -->
+  <div class="species-grid">
+
+    <!-- ① Avicennia alba -->
+    <div class="species-card reveal reveal-delay-1">
+      <div class="species-photo" id="photo-1">
+        <img src="foto/avicennia-alba.jpg" id="img-1" alt="Avicennia alba">
+        <div class="species-photo-placeholder">
+          <span>🌿</span>
+          <p>Foto belum tersedia</p>
+        </div>
+        <div class="species-photo-overlay">Avicennia alba · Api-api Putih</div>
+      </div>
+      <div class="species-header">
+        <div class="species-latin">Avicennia alba</div>
+        <span class="species-common">Api-api Putih</span>
+      </div>
+      <div class="species-body species-traits">
+        <div class="trait-group">
+          <div class="trait-label">🌿 Daun</div>
+          <div class="trait-text">
+            Elips memanjang, permukaan atas hijau mengkilap dan bawah
+            keputihan/abu-abu, ujung meruncing, tepi rata.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌱 Akar</div>
+          <div class="trait-text">
+            Pneumatophore berbentuk seperti paku-paku kecil yang keluar
+            tegak lurus dari tanah lumpur di sekitar pohon.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌰 Buah / Biji</div>
+          <div class="trait-text">
+            Polong pipih berwarna hijau kekuningan, ujung meruncing,
+            bersifat vivipar — berkecambah langsung di pohon induk.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌍 Habitat</div>
+          <div class="trait-text">
+            Sering ditemukan di zona terdepan menghadap laut,
+            toleran terhadap salinitas tinggi dan substrat lumpur lunak.
+          </div>
+        </div>
+      </div>
+      <div class="species-uses">
+        <div class="uses-label">Pemanfaatan</div>
+        <div class="uses-tags">
+          <span class="use-tag">🩹 Obat luka bakar</span>
+          <span class="use-tag">🌾 Tepung biji</span>
+          <span class="use-tag">🐄 Pakan ternak</span>
+          <span class="use-tag">🌡️ Penurun panas</span>
+        </div>
+      </div>
+      <div class="species-footer">
+        <a href="asisten.html?prompt=Ceritakan+lebih+detail+tentang+Avicennia+alba%2C+ciri+morfologi+lengkap+dan+semua+pemanfaatannya+oleh+masyarakat+Balikpapan."
+           class="ask-ai-btn">
+          🤖 Tanya AI lebih lanjut →
+        </a>
+      </div>
+    </div>
+
+    <!-- ② Rhizophora apiculata -->
+    <div class="species-card reveal reveal-delay-2">
+      <div class="species-photo" id="photo-2">
+        <img src="foto/rhizophora-apiculata.jpg" id="img-2" alt="Rhizophora apiculata">
+        <div class="species-photo-placeholder">
+          <span>🌿</span>
+          <p>Foto belum tersedia</p>
+        </div>
+        <div class="species-photo-overlay">Rhizophora apiculata · Bakau Minyak</div>
+      </div>
+      <div class="species-header">
+        <div class="species-latin">Rhizophora apiculata</div>
+        <span class="species-common">Bakau Minyak</span>
+      </div>
+      <div class="species-body species-traits">
+        <div class="trait-group">
+          <div class="trait-label">🌿 Daun</div>
+          <div class="trait-text">
+            Elips lebar, tebal, hijau tua mengkilap, tulang daun menonjol,
+            ujung runcing, tangkai berwarna kemerahan khas.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌱 Akar</div>
+          <div class="trait-text">
+            Akar tunjang (prop roots) melengkung seperti jangkar,
+            kokoh menancap ke substrat lumpur dari batang utama.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌰 Buah / Biji</div>
+          <div class="trait-text">
+            Propagul silindris ramping dan panjang, coklat kehijauan,
+            hipokotil memanjang menggantung dari buah — siap jatuh dan tancap.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌍 Habitat</div>
+          <div class="trait-text">
+            Mendominasi zona tengah hutan mangrove, menyukai
+            substrat lumpur dalam dengan salinitas sedang.
+          </div>
+        </div>
+      </div>
+      <div class="species-uses">
+        <div class="uses-label">Pemanfaatan</div>
+        <div class="uses-tags">
+          <span class="use-tag">🌾 Tepung propagul</span>
+          <span class="use-tag">🏠 Bahan bangunan</span>
+          <span class="use-tag">🟫 Pewarna batik</span>
+          <span class="use-tag">💊 Obat diare</span>
+          <span class="use-tag">🩺 Antiseptik</span>
+        </div>
+      </div>
+      <div class="species-footer">
+        <a href="asisten.html?prompt=Ceritakan+lebih+detail+tentang+Rhizophora+apiculata%2C+ciri+morfologi+lengkap+dan+semua+pemanfaatannya+oleh+masyarakat+Balikpapan."
+           class="ask-ai-btn">
+          🤖 Tanya AI lebih lanjut →
+        </a>
+      </div>
+    </div>
+
+    <!-- ③ Rhizophora mucronata -->
+    <div class="species-card reveal reveal-delay-3">
+      <div class="species-photo" id="photo-3">
+        <img src="foto/rhizophora-mucronata.jpg" id="img-3" alt="Rhizophora mucronata">
+        <div class="species-photo-placeholder">
+          <span>🌿</span>
+          <p>Foto belum tersedia</p>
+        </div>
+        <div class="species-photo-overlay">Rhizophora mucronata · Bakau Hitam</div>
+      </div>
+      <div class="species-header">
+        <div class="species-latin">Rhizophora mucronata</div>
+        <span class="species-common">Bakau Hitam / Mucrova</span>
+      </div>
+      <div class="species-body species-traits">
+        <div class="trait-group">
+          <div class="trait-label">🌿 Daun</div>
+          <div class="trait-text">
+            Elips lebar, hijau tua mengkilap, ujung mucronat (berduri kecil),
+            ukuran lebih besar dibanding <em>R. apiculata</em>.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌱 Akar</div>
+          <div class="trait-text">
+            Akar tunjang lebih besar dan menjangkau lebih jauh,
+            sering membentuk jaringan akar yang kompleks dan rapat.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌰 Buah / Biji</div>
+          <div class="trait-text">
+            Propagul lebih gemuk dan pendek dibanding kerabatnya,
+            ujung kasar/bertekstur, hipokotil coklat tua kehitaman.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌍 Habitat</div>
+          <div class="trait-text">
+            Tumbuh di zona lebih dalam dengan genangan air yang lebih lama,
+            toleran terhadap kondisi anaerobik di substrat berlumpur.
+          </div>
+        </div>
+      </div>
+      <div class="species-uses">
+        <div class="uses-label">Pemanfaatan</div>
+        <div class="uses-tags">
+          <span class="use-tag">☕ Kopi Mucrova</span>
+          <span class="use-tag">🔴 Pewarna merah</span>
+          <span class="use-tag">🎨 Ecoprinting</span>
+          <span class="use-tag">🦷 Antiseptik mulut</span>
+          <span class="use-tag">💉 Antidiabetes</span>
+        </div>
+      </div>
+      <div class="species-footer">
+        <a href="asisten.html?prompt=Ceritakan+lebih+detail+tentang+Rhizophora+mucronata%2C+ciri+morfologi+lengkap+dan+semua+pemanfaatannya+termasuk+kopi+mucrova+dan+pewarna+alami."
+           class="ask-ai-btn">
+          🤖 Tanya AI lebih lanjut →
+        </a>
+      </div>
+    </div>
+
+    <!-- ④ Sonneratia alba -->
+    <div class="species-card reveal reveal-delay-4">
+      <div class="species-photo" id="photo-4">
+        <img src="foto/sonneratia-alba.jpg" id="img-4" alt="Sonneratia alba">
+        <div class="species-photo-placeholder">
+          <span>🌿</span>
+          <p>Foto belum tersedia</p>
+        </div>
+        <div class="species-photo-overlay">Sonneratia alba · Pedada</div>
+      </div>
+      <div class="species-header">
+        <div class="species-latin">Sonneratia alba</div>
+        <span class="species-common">Pedada / Bogem</span>
+      </div>
+      <div class="species-body species-traits">
+        <div class="trait-group">
+          <div class="trait-label">🌿 Daun</div>
+          <div class="trait-text">
+            Bulat hingga elips lebar, tebal dan hijau cerah,
+            ujung membulat, tulang daun terlihat jelas dari kedua permukaan.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌱 Akar</div>
+          <div class="trait-text">
+            Pneumatophore besar berbentuk tumpul seperti jari,
+            muncul dalam radius lebar di sekitar pohon induk.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌰 Buah / Biji</div>
+          <div class="trait-text">
+            Buah buni bulat pipih berwarna hijau, dengan kelopak bintang
+            merah-hijau yang mekar seperti mahkota — sangat ikonik.
+          </div>
+        </div>
+        <div class="trait-group">
+          <div class="trait-label">🌍 Habitat</div>
+          <div class="trait-text">
+            Tumbuh di zona terdepan dan tepi sungai berair payau,
+            sering ditemukan bersama Avicennia di area pasang surut tinggi.
+          </div>
+        </div>
+      </div>
+      <div class="species-uses">
+        <div class="uses-label">Pemanfaatan</div>
+        <div class="uses-tags">
+          <span class="use-tag">🍹 Sirup buah</span>
+          <span class="use-tag">🌶️ Campuran sambal</span>
+          <span class="use-tag">⚗️ Antioksidan</span>
+          <span class="use-tag">💊 Antidiabetes</span>
+          <span class="use-tag">❤️ Kolesterol</span>
+        </div>
+      </div>
+      <div class="species-footer">
+        <a href="asisten.html?prompt=Ceritakan+lebih+detail+tentang+Sonneratia+alba%2C+ciri+morfologi+lengkap+dan+semua+pemanfaatannya+termasuk+sirup+buah+pedada."
+           class="ask-ai-btn">
+          🤖 Tanya AI lebih lanjut →
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /species-grid -->
+
+  <!-- AI CTA Strip -->
+  <div class="ai-cta-strip reveal">
+    <p>
+      <strong>Temukan spesies lain di lapangan?</strong><br>
+      Gunakan AI Asisten untuk mengidentifikasi mangrove yang belum ada di halaman ini —
+      cukup deskripsikan ciri-cirinya atau upload foto langsung dari lapangan.
+    </p>
+    <a href="asisten.html" class="btn-ai-strip">🤖 Buka AI Asisten</a>
+  </div>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">Akar Nusantara</div>
+  <p class="footer-tagline">Mangrove Teluk Balikpapan — Kalimantan Timur</p>
+  <div class="footer-divider"></div>
+  <div class="footer-sources">
+    <strong>Referensi Morfologi</strong><br>
+    KLHK RI · BKSDA Kalimantan Timur · Panduan Identifikasi Mangrove Indonesia
+  </div>
+</footer>
+
+<script>
+  // ── NAVBAR ──
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ── REVEAL ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── LOAD FOTO DARI FOLDER foto/ ──
+  [
+    { imgId: 'img-1', photoId: 'photo-1', src: 'foto/avicennia-alba.jpg'       },
+    { imgId: 'img-2', photoId: 'photo-2', src: 'foto/rhizophora-apiculata.jpg' },
+    { imgId: 'img-3', photoId: 'photo-3', src: 'foto/rhizophora-mucronata.jpg' },
+    { imgId: 'img-4', photoId: 'photo-4', src: 'foto/sonneratia-alba.jpg'       },
+  ].forEach(({ imgId, photoId, src }) => {
+    const img   = document.getElementById(imgId);
+    const photo = document.getElementById(photoId);
+    const test  = new Image();
+    test.onload  = () => { img.classList.add('loaded'); photo.classList.add('has-photo'); };
+    test.onerror = () => { img.removeAttribute('src'); };
+    test.src = src;
+  });
+</script>
+</body>
+</html>
