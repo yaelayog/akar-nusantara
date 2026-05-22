@@ -5,7 +5,7 @@
 //  Tidak pernah terekspos ke frontend/publik
 // ══════════════════════════════════════════════════════
 
-const GEMINI_MODEL = 'gemini-1.5-flash';
+const GEMINI_MODEL = 'gemini-2.5-flash';
 const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
 // Rate limit: max request per IP per hari
